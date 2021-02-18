@@ -1,0 +1,15 @@
+*.tfvars
+*.tfstate*
+.terraform/
+**/inspec.lock
+*.gem
+Gemfile.lock
+terraform.tfstate.d/
+.idea/
+*.iml
+config-map-aws-auth*.yaml
+kubeconfig_*
+*.swp
+
+# To allow validate pass locally
+providers_test_az.tf
