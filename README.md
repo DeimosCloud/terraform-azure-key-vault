@@ -78,7 +78,7 @@ Full contributing guidelines are covered [here](CONTRIBUTING.md).
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| admin\_key\_permissions | List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. | `list` | <pre>[<br>  "backup",<br>  "create",<br>  "decrypt",<br>  "delete",<br>  "encrypt",<br>  "get",<br>  "import",<br>  "list",<br>  "purge",<br>  "recover",<br>  "restore",<br>  "sign",<br>  "unwrapKey",<br>  "update",<br>  "verify",<br>  "wrapKey"<br>]</pre> | no |
+| admin\_key\_permissions | List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. | `list(any)` | <pre>[<br>  "backup",<br>  "create",<br>  "decrypt",<br>  "delete",<br>  "encrypt",<br>  "get",<br>  "import",<br>  "list",<br>  "purge",<br>  "recover",<br>  "restore",<br>  "sign",<br>  "unwrapKey",<br>  "update",<br>  "verify",<br>  "wrapKey"<br>]</pre> | no |
 | admin\_secret\_permissions | List of secret permissions, must be one or more from the following: backup, delete, get, list, purge, recover, restore and set | `list(string)` | <pre>[<br>  "backup",<br>  "delete",<br>  "get",<br>  "list",<br>  "purge",<br>  "recover",<br>  "restore",<br>  "set"<br>]</pre> | no |
 | admin\_storage\_permissions | List of storage permissions, must be one or more from the following: backup, delete, deletesas, get, getsas, list, listsas, purge, recover, regeneratekey, restore, set, setsas and update. | `list(string)` | <pre>[<br>  "backup",<br>  "deleteas",<br>  "delete",<br>  "getas",<br>  "get",<br>  "listas",<br>  "list",<br>  "purge",<br>  "recover",<br>  "restore",<br>  "regeneratekey",<br>  "set",<br>  "setas",<br>  "update"<br>]</pre> | no |
 | enabled\_for\_disk\_encryption | Boolean flag to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys. Defaults to false | `bool` | `null` | no |
@@ -90,12 +90,12 @@ Full contributing guidelines are covered [here](CONTRIBUTING.md).
 | network\_acls\_subnet\_ids | (Optional) One or more Subnet ID's which should be able to access this Key Vault. | `list(string)` | `null` | no |
 | purge\_protection\_enabled | Is Purge Protection enabled for this Key Vault? Defaults to false | `bool` | `null` | no |
 | resource\_group\_name | The name of the resource group in which to create the Key Vault. Changing this forces a new resource to be created. | `string` | n/a | yes |
-| secrets | List of secrets for be created | <pre>list(object({<br>    name  = string<br>    value = string<br>  }))</pre> | n/a | yes |
+| secrets | List of secrets for be created | `map` | `{}` | no |
 | sku\_name | The Name of the SKU used for this Key Vault. Possible values are standard and premium | `string` | `"standard"` | no |
 | tags | (Optional) A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
-| user\_key\_permissions | List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. | `list` | <pre>[<br>  "list",<br>  "get",<br>  "decrypt",<br>  "unwrapKey"<br>]</pre> | no |
-| user\_secret\_permissions | List of secret permissions, must be one or more from the following: backup, delete, get, list, purge, recover, restore and set | `list` | <pre>[<br>  "list",<br>  "get"<br>]</pre> | no |
-| user\_storage\_permissions | List of storage permissions, must be one or more from the following: backup, delete, deletesas, get, getsas, list, listsas, purge, recover, regeneratekey, restore, set, setsas and update. | `list` | <pre>[<br>  "list",<br>  "get",<br>  "listas",<br>  "getsas"<br>]</pre> | no |
+| user\_key\_permissions | List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. | `list(any)` | <pre>[<br>  "list",<br>  "get",<br>  "decrypt",<br>  "unwrapKey"<br>]</pre> | no |
+| user\_secret\_permissions | List of secret permissions, must be one or more from the following: backup, delete, get, list, purge, recover, restore and set | `list(any)` | <pre>[<br>  "list",<br>  "get"<br>]</pre> | no |
+| user\_storage\_permissions | List of storage permissions, must be one or more from the following: backup, delete, deletesas, get, getsas, list, listsas, purge, recover, regeneratekey, restore, set, setsas and update. | `list(any)` | <pre>[<br>  "list",<br>  "get",<br>  "listas",<br>  "getsas"<br>]</pre> | no |
 | users | Object IDs of Users that will have access to the key vault | `list(string)` | `[]` | no |
 
 ## Outputs

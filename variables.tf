@@ -46,26 +46,26 @@ variable "users" {
 
 # User permissions
 variable "user_key_permissions" {
-  type        = list
+  type        = list(any)
   description = "List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey."
   default     = ["list", "get", "decrypt", "unwrapKey"]
 }
 
 variable "user_secret_permissions" {
-  type        = list
+  type        = list(any)
   description = "List of secret permissions, must be one or more from the following: backup, delete, get, list, purge, recover, restore and set"
   default     = ["list", "get"]
 }
 
 variable "user_storage_permissions" {
-  type        = list
+  type        = list(any)
   description = "List of storage permissions, must be one or more from the following: backup, delete, deletesas, get, getsas, list, listsas, purge, recover, regeneratekey, restore, set, setsas and update."
   default     = ["list", "get", "listas", "getsas"]
 }
 
 # Admin permission
 variable "admin_key_permissions" {
-  type        = list
+  type        = list(any)
   description = "List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey."
   default     = ["backup", "create", "decrypt", "delete", "encrypt", "get", "import", "list", "purge", "recover", "restore", "sign", "unwrapKey", "update", "verify", "wrapKey"]
 
@@ -109,8 +109,5 @@ variable "network_acls_subnet_ids" {
 
 variable "secrets" {
   description = "List of secrets for be created"
-  type = list(object({
-    name  = string
-    value = string
-  }))
+  default     = {}
 }

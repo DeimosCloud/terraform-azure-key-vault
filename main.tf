@@ -1,6 +1,6 @@
 data "azurerm_client_config" "current_client_config" {}
 
-data azurerm_resource_group "rg" {
+data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
@@ -58,10 +58,10 @@ resource "azurerm_key_vault" "key_vault" {
 # KEY VAULT SECRETS
 
 resource "azurerm_key_vault_secret" "key_vault_secret" {
-  count        = length(var.secrets)
-  name         = var.secrets[count.index].name
-  value        = var.secrets[count.index].value
+  for_each     = var.secrets
   key_vault_id = azurerm_key_vault.key_vault.id
+  name         = each.key
+  value        = each.value
 
   tags = var.tags
 }
