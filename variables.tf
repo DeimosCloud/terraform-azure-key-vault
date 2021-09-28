@@ -40,8 +40,11 @@ variable "purge_protection_enabled" {
 
 variable "users" {
   description = "Object IDs of Users that will have access to the key vault"
-  type        = list(string)
-  default     = []
+  type = list(object({
+    user_id = string
+    admin   = bool
+  }))
+  default = []
 }
 
 # User permissions
