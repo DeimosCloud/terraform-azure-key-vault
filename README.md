@@ -96,7 +96,7 @@ Full contributing guidelines are covered [here](CONTRIBUTING.md).
 | user\_key\_permissions | List of key permissions, must be one or more from the following: backup, create, decrypt, delete, encrypt, get, import, list, purge, recover, restore, sign, unwrapKey, update, verify and wrapKey. | `list(any)` | <pre>[<br>  "list",<br>  "get",<br>  "decrypt",<br>  "unwrapKey"<br>]</pre> | no |
 | user\_secret\_permissions | List of secret permissions, must be one or more from the following: backup, delete, get, list, purge, recover, restore and set | `list(any)` | <pre>[<br>  "list",<br>  "get"<br>]</pre> | no |
 | user\_storage\_permissions | List of storage permissions, must be one or more from the following: backup, delete, deletesas, get, getsas, list, listsas, purge, recover, regeneratekey, restore, set, setsas and update. | `list(any)` | <pre>[<br>  "list",<br>  "get",<br>  "listas",<br>  "getsas"<br>]</pre> | no |
-| users | Object IDs of Users that will have access to the key vault | `list(string)` | `[]` | no |
+| users | Object IDs of Users that will have access to the key vault | <pre>list(object({<br>    user_id = string<br>    admin   = bool<br>  }))</pre> | `[]` | no |
 
 ## Outputs
 

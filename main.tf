@@ -27,17 +27,14 @@ resource "azurerm_key_vault" "key_vault" {
   # access policy for defined users
   dynamic "access_policy" {
 
-    for_each = [for user in var.users : {
-      object_id = user
-    }]
-
+    for_each = var.users
     content {
       tenant_id = data.azurerm_client_config.current_client_config.tenant_id
-      object_id = access_policy.value.object_id
+      object_id = access_policy.value.user_id
 
-      key_permissions     = var.user_key_permissions
-      secret_permissions  = var.user_secret_permissions
-      storage_permissions = var.user_storage_permissions
+      key_permissions     = access_policy.value.admin ? var.admin_key_permissions : var.user_key_permissions
+      secret_permissions  = access_policy.value.admin ? var.admin_secret_permissions : var.user_secret_permissions
+      storage_permissions = access_policy.value.admin ? var.admin_storage_permissions : var.user_storage_permissions
     }
   }
 
