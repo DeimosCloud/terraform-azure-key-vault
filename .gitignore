@@ -13,3 +13,16 @@ kubeconfig_*
 
 # To allow validate pass locally
 providers_test_az.tf
+
+# Local .terraform directories
+**/.terraform/*
+
+# Terraform lockfile
+.terraform.lock.hcl
+
+#  Crash log files
+crash.log
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
